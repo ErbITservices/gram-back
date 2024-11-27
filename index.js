@@ -31,7 +31,7 @@ const cpu = os.cpus().length;
 
 
   const corsOptions = {
-    origin:  `${base_url}` || `http://localhost:5173`,
+    origin: [`${base_url}`,`http://localhost:5173`] ,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };
