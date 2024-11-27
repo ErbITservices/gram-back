@@ -22,11 +22,11 @@ const base_url = process.env.BASE ;
 const cpu = os.cpus().length;
 
 
-if (cluster.isPrimary) {
-  for (let index = 0; index < cpu; index++) {
-    cluster.fork();
-  }
-} else {
+// if (cluster.isPrimary) {
+//   for (let index = 0; index < cpu; index++) {
+//     cluster.fork();
+//   }
+// } else {
  const app = express();
 
 
@@ -37,7 +37,9 @@ if (cluster.isPrimary) {
   };
 
   // console.log(cpu);
-
+  app.get("/", function (req, res) {
+    res.send("Hello World");
+  });
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
   // app.use("/person",personRoutes);
@@ -61,5 +63,5 @@ if (cluster.isPrimary) {
       console.log(`jaimin server is run on port ${PORT}`);
     })
   );
-}
+// }
 
